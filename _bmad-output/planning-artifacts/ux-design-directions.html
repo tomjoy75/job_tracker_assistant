@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UX Design Directions — Job Tracker Assistant</title>
+  <style>
+    :root {
+      --blue-soft: #5b8ed9;
+      --blue-deep: #2b4f91;
+      --gray-900: #1d2433;
+      --gray-700: #3b465c;
+      --gray-500: #6b768c;
+      --gray-200: #e5e9f2;
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --success: #2f9e72;
+      --warning: #d9a441;
+      --error: #d25b5b;
+      --radius: 14px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --shadow: 0 10px 30px rgba(20, 30, 50, 0.08);
+      --shadow-soft: 0 6px 16px rgba(20, 30, 50, 0.06);
+      --font: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--gray-900);
+    }
+    header {
+      padding: var(--space-6) var(--space-6) var(--space-4);
+    }
+    h1 { margin: 0 0 var(--space-2); font-size: 28px; }
+    p.lead { margin: 0; color: var(--gray-700); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-6);
+      padding: 0 var(--space-6) var(--space-7);
+    }
+    .direction {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+    .direction header {
+      padding: var(--space-4) var(--space-5);
+      background: #fbfcff;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .direction h2 { margin: 0 0 var(--space-1); font-size: 18px; }
+    .direction p { margin: 0; color: var(--gray-700); font-size: 13px; }
+    .mock {
+      padding: var(--space-5);
+      background: #fff;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-weight: 600;
+    }
+    .brand .dot {
+      width: 10px; height: 10px; background: var(--blue-deep); border-radius: 999px;
+    }
+    .cta {
+      background: var(--blue-deep);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      cursor: default;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eef3ff;
+      color: var(--blue-deep);
+      font-size: 11px;
+    }
+    .cards {
+      display: grid;
+      gap: var(--space-3);
+    }
+    .card {
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: var(--space-4);
+      box-shadow: var(--shadow-soft);
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+    .label { color: var(--gray-500); font-size: 11px; }
+    .status {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef8f3;
+      color: var(--success);
+    }
+    .status.warn { background: #fff6e7; color: var(--warning); }
+    .status.err { background: #fdecec; color: var(--error); }
+    .list {
+      display: grid;
+      gap: var(--space-2);
+      font-size: 12px;
+    }
+    .list div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--gray-700);
+    }
+    .nav {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .nav button {
+      border: 1px solid var(--gray-200);
+      background: #fff;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      cursor: default;
+    }
+    .focus {
+      border-left: 3px solid var(--blue-deep);
+      padding-left: var(--space-3);
+    }
+    .dense .card { padding: var(--space-3); }
+    .airy .card { padding: var(--space-5); }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    .sidebar {
+      border-right: 1px solid var(--gray-200);
+      padding-right: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Design Directions — Job Tracker Assistant</h1>
+    <p class="lead">6 variations basées sur la fondation visuelle (bleu calme, minimalisme, capture 2 temps).</p>
+  </header>
+
+  <section class="grid">
+    <article class="direction">
+      <header>
+        <h2>Direction 1 — Calm Dashboard</h2>
+        <p>Minimalisme informatif, hiérarchie claire, focus alertes.</p>
+      </header>
+      <div class="mock airy">
+        <div class="topbar">
+          <div class="brand"><span class="dot"></span>Job Tracker</div>
+          <button class="cta">Capturer</button>
+        </div>
+        <div class="nav">
+          <button>Entreprises</button><button>Alertes</button><button>Suivi</button>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="row">
+              <strong>GreenTech Lab</strong><span class="status">OK</span>
+            </div>
+            <div class="list">
+              <div><span>Alertes pertinentes</span><span>3</span></div>
+              <div><span>Dernière offre</span><span>il y a 2h</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="row">
+              <strong>AudioFlow</strong><span class="status warn">Source lente</span>
+            </div>
+            <div class="list">
+              <div><span>Alertes pertinentes</span><span>1</span></div>
+              <div><span>Dernière offre</span><span>hier</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="direction">
+      <header>
+        <h2>Direction 2 — Capture First</h2>
+        <p>Le bouton capture domine, feedback immédiat.</p>
+      </header>
+      <div class="mock">
+        <div class="topbar">
+          <div class="brand"><span class="dot"></span>Capture</div>
+          <span class="pill">Capturé ✓</span>
+        </div>
+        <div class="card focus">
+          <div class="row"><strong>Nouvelle capture</strong><span class="label">1–2 clics</span></div>
+          <div class="list">
+            <div><span>URL</span><span>page-carriere.com</span></div>
+            <div><span>Entreprise</span><span>Auto‑détectée</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row"><strong>À compléter</strong><span class="label">2</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="direction">
+      <header>
+        <h2>Direction 3 — Split Flow</h2>
+        <p>Gauche = sources, droite = alertes temps réel.</p>
+      </header>
+      <div class="mock">
+        <div class="topbar">
+          <div class="brand"><span class="dot"></span>Sources</div>
+          <button class="cta">Ajouter</button>
+        </div>
+        <div class="split">
+          <div class="sidebar">
+            <div class="list">
+              <div><span>GreenTech Lab</span><span class="status">OK</span></div>
+              <div><span>AudioFlow</span><span class="status warn">Lent</span></div>
+              <div><span>MusicData</span><span class="status err">KO</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <div class="row"><strong>Stage Frontend</strong><span class="label">il y a 10m</span></div>
+              <div class="list"><div><span>Stack</span><span>React</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="direction">
+      <header>
+        <h2>Direction 4 — Quiet List</h2>
+        <p>Liste sobre, densité faible, focus sérénité.</p>
+      </header>
+      <div class="mock">
+        <div class="topbar">
+          <div class="brand"><span class="dot"></span>Entreprises</div>
+          <button class="cta">Filtres</button>
+        </div>
+        <div class="card">
+          <div class="row"><strong>GreenTech Lab</strong><span class="label">3 alertes</span></div>
+          <div class="row"><strong>AudioFlow</strong><span class="label">1 alerte</span></div>
+          <div class="row"><strong>MusicData</strong><span class="label">0 alerte</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="direction">
+      <header>
+        <h2>Direction 5 — Kanban Progressif</h2>
+        <p>Vue suivi uniquement en mode recherche active.</p>
+      </header>
+      <div class="mock">
+        <div class="topbar">
+          <div class="brand"><span class="dot"></span>Suivi</div>
+          <button class="cta">Mode recherche</button>
+        </div>
+        <div class="split">
+          <div class="card">
+            <div class="label">Repérées</div>
+            <div class="list"><div><span>GreenTech</span><span>✓</span></div></div>
+          </div>
+          <div class="card">
+            <div class="label">Postulées</div>
+            <div class="list"><div><span>AudioFlow</span><span>↗</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="direction">
+      <header>
+        <h2>Direction 6 — Status First</h2>
+        <p>Sources en statut clair (OK/Lent/KO).</p>
+      </header>
+      <div class="mock dense">
+        <div class="topbar">
+          <div class="brand"><span class="dot"></span>Alertes</div>
+          <button class="cta">Réduire bruit</button>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="row"><strong>Sources</strong><span class="status">OK</span></div>
+            <div class="list">
+              <div><span>OK</span><span>12</span></div>
+              <div><span>Lent</span><span>3</span></div>
+              <div><span>KO</span><span>1</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</body>
+</html>

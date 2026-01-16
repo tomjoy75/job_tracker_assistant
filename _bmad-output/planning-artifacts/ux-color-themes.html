@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UX Color Themes — Job Tracker Assistant</title>
+  <style>
+    :root {
+      --blue-soft: #5b8ed9;
+      --blue-deep: #2b4f91;
+      --gray-900: #1d2433;
+      --gray-700: #3b465c;
+      --gray-500: #6b768c;
+      --gray-200: #e5e9f2;
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --success: #2f9e72;
+      --warning: #d9a441;
+      --error: #d25b5b;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(20, 30, 50, 0.08);
+      --font: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--gray-900);
+      padding: 24px;
+    }
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    p { margin: 0 0 24px; color: var(--gray-700); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .swatch { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .color {
+      width: 52px; height: 28px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08);
+    }
+    .label { font-size: 12px; color: var(--gray-700); }
+  </style>
+</head>
+<body>
+  <h1>UX Color Themes — Job Tracker Assistant</h1>
+  <p>Palette de base (bleu serein + neutres). Conçue pour lisibilité et calme.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="swatch"><span class="label">Primary Soft</span><div class="color" style="background: var(--blue-soft)"></div></div>
+      <div class="swatch"><span class="label">Primary Deep (CTA)</span><div class="color" style="background: var(--blue-deep)"></div></div>
+      <div class="swatch"><span class="label">Neutral 900</span><div class="color" style="background: var(--gray-900)"></div></div>
+      <div class="swatch"><span class="label">Neutral 700</span><div class="color" style="background: var(--gray-700)"></div></div>
+      <div class="swatch"><span class="label">Neutral 500</span><div class="color" style="background: var(--gray-500)"></div></div>
+      <div class="swatch"><span class="label">Neutral 200</span><div class="color" style="background: var(--gray-200)"></div></div>
+    </div>
+    <div class="card">
+      <div class="swatch"><span class="label">Success</span><div class="color" style="background: var(--success)"></div></div>
+      <div class="swatch"><span class="label">Warning</span><div class="color" style="background: var(--warning)"></div></div>
+      <div class="swatch"><span class="label">Error</span><div class="color" style="background: var(--error)"></div></div>
+      <div class="swatch"><span class="label">Background</span><div class="color" style="background: var(--bg)"></div></div>
+      <div class="swatch"><span class="label">Card</span><div class="color" style="background: var(--card)"></div></div>
+    </div>
+  </div>
+</body>
+</html>

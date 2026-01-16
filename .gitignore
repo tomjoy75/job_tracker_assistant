@@ -1,0 +1,30 @@
+# --- Dépendances et Environnements ---
+node_modules/
+.npm/
+venv/
+.venv/
+env/
+
+# --- Secrets et Clés (TRÈS IMPORTANT) ---
+.env
+*.key
+*.pem
+# Ne commitez jamais vos clés d'API OpenAI/Anthropic !
+
+# --- Système et IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+# On garde les fichiers de conf pour que l'IDE reconnaisse les agents
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# --- Logs et Temporaires ---
+*.log
+.cache/
+.tmp/
+.bmad-flattenignore
+
+# --- CE QU'IL NE FAUT PAS IGNORER ---
+# Ne pas ignorer .codex/ car il contient vos agents [3]
+# Ne pas ignorer _bmad-output/ ou docs/ car ils contiennent vos specs [2]

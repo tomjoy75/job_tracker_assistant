@@ -1,0 +1,116 @@
+# Workflow Status Template
+
+# This tracks progress through BMM methodology Analysis, Planning, and Solutioning phases.
+# Implementation phase is tracked separately in sprint-status.yaml
+
+# STATUS DEFINITIONS:
+# ==================
+# Initial Status (before completion):
+#   - required: Must be completed to progress
+#   - optional: Can be completed but not required
+#   - recommended: Strongly suggested but not required
+#   - conditional: Required only if certain conditions met (e.g., if_has_ui)
+#
+# Completion Status:
+#   - {file-path}: File created/found (e.g., "docs/product-brief.md")
+#   - skipped: Optional/conditional workflow that was skipped
+
+generated: "2026-01-11T10:06:53Z"
+project: "Job Tracker Assistant"
+project_purpose: "Centraliser les entreprises pertinentes repérées hors période de recherche active, déclencher des alertes d’offres ciblées, et éviter la dispersion des informations (CV, notes, liens) pour être prêt quand la recherche devient active."
+user_description: "Centraliser les entreprises pertinentes repérées hors période de recherche active, déclencher des alertes d’offres ciblées, et éviter la dispersion des informations pour être prêt quand la recherche devient active."
+project_criteria: "Stage/alternance en tech; stack maîtrisée; localisation proche (sauf expérience exceptionnelle); alertes immédiates sur offres pertinentes."
+project_non_goals: "Pas d’usine à gaz; expérience fluide et agréable."
+project_min_data: "Nom, adresse (distance), site, page recrutement, stack (si connue), ressenti/avantages, note Glassdoor, contacts (LinkedIn), historique d’échanges."
+project_primary_action: "Voir les alertes d’offres; ajout d’une entreprise en quelques clics via une méthode simple (ex. extension/onglet)."
+project_adoption_risk: "Saisie trop compliquée ou chronophage des nouvelles entreprises."
+project_min_flow: "Enregistrer entreprise + page recrutement → définir critères → scrapper/offres → alerte si match."
+project_automation_scope: "Scrapping des pages recrutement des entreprises enregistrées; extension possible à Indeed mais avec filtre strict pour éviter le bruit."
+project_magic_moment: "Recevoir une alerte ultra-pertinente dès publication et envoyer rapidement candidature avec CV/LM prêts; suivi des offres et réponses."
+project_capture_ux: "Extension navigateur + mobile; ajout en 1–2 clics depuis la page; puis suggestions pour compléter les champs."
+project_sources: "Priorité aux pages carrière des entreprises ciblées; pas d’agrégateurs pour éviter le bruit (extension possible plus tard)."
+project_alert_quality: "Tolérance aux faux positifs."
+project_alert_frequency: "Immédiat."
+project_ui: "Vue tableau de bord."
+project_capture_flow: "Capture rapide en 2 temps: enregistrement ultra-rapide (lien/photo), puis tri sur tableau de bord pour compléter ou jeter."
+project_min_required_fields: "Nom de la boîte + source (lien ou photo)."
+project_capture_form: "Wizard pour compléter la fiche."
+project_alert_filters: "Exclure rôles non pertinents via mots-clés; filtre type de contrat + localisation."
+project_alert_channels: "Push mobile + email + tableau de bord."
+project_type: "{{project_type}}"
+selected_track: "method"
+field_type: "greenfield"
+brainstorm_requested: false
+research_requested: false
+product_brief_requested: true
+workflow_path: "_bmad/bmm/workflows/workflow-status/paths/method-greenfield.yaml"
+workflow_status:
+  - phase: 1
+    name: "Analysis (Optional)"
+    optional: true
+    workflows:
+      - id: "brainstorm-project"
+        status: "skipped"
+        optional: true
+        agent: "analyst"
+        command: "/bmad:bmm:workflows:brainstorming"
+      - id: "research"
+        status: "skipped"
+        optional: true
+        agent: "analyst"
+        command: "/bmad:bmm:workflows:research"
+      - id: "product-brief"
+        status: "/home/tjoyeux/repo/bmad_method/job_tracker_assistant/_bmad-output/planning-artifacts/product-brief-job_tracker_assistant-2026-01-11.md"
+        completed_at: "2026-01-11T10:06:53Z"
+        optional: true
+        agent: "analyst"
+        command: "/bmad:bmm:workflows:create-product-brief"
+  - phase: 2
+    name: "Planning"
+    required: true
+    workflows:
+      - id: "prd"
+        status: "/home/tjoyeux/repo/bmad_method/job_tracker_assistant/_bmad-output/planning-artifacts/prd.md"
+        completed_at: "2026-01-12T22:33:04Z"
+        required: true
+        agent: "pm"
+        command: "/bmad:bmm:workflows:create-prd"
+      - id: "create-ux-design"
+        status: "/home/tjoyeux/repo/bmad_method/job_tracker_assistant/_bmad-output/planning-artifacts/ux-design-specification.md"
+        completed_at: "2026-01-12T23:39:42Z"
+        conditional: "if_has_ui"
+        agent: "ux-designer"
+        command: "/bmad:bmm:workflows:create-ux-design"
+  - phase: 3
+    name: "Solutioning"
+    required: true
+    workflows:
+      - id: "create-architecture"
+        status: "required"
+        required: true
+        agent: "architect"
+        command: "/bmad:bmm:workflows:create-architecture"
+      - id: "create-epics-and-stories"
+        status: "required"
+        required: true
+        agent: "pm"
+        command: "/bmad:bmm:workflows:create-epics-and-stories"
+      - id: "test-design"
+        status: "optional"
+        optional: true
+        agent: "tea"
+        command: "/bmad:bmm:workflows:test-design"
+      - id: "implementation-readiness"
+        status: "required"
+        required: true
+        agent: "architect"
+        command: "/bmad:bmm:workflows:implementation-readiness"
+  - phase: 4
+    name: "Implementation"
+    required: true
+    workflows:
+      - id: "sprint-planning"
+        status: "required"
+        required: true
+        agent: "sm"
+        command: "/bmad:bmm:workflows:sprint-planning"
